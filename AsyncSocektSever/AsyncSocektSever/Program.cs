@@ -10,7 +10,9 @@ namespace AsyncSocektSever
     {
         static void Main(string[] args)
         {
-
+            Serv serv = new Serv();
+            serv.Start("127.0.0.1", 1234);
+            Console.ReadKey();
         }
     }
 }

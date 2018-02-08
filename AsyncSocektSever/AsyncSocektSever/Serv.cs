@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 
@@ -80,7 +77,41 @@ namespace AsyncSocektSever
         }
         private void ReceiveCb(IAsyncResult result)
         {
-
+            Conn conn = (Conn)result.AsyncState;
+            try
+            {
+                int count = conn.socket.EndReceive(result);
+                if (count <= 0)
+                {
+                    Console.WriteLine("收到[" + conn.GetAddress() + "]断开连接");
+                    conn.Close();
+                    return;
+                }
+                //数据处理
+                string str = Encoding.UTF8.GetString(conn.readbuffer, 0, count);
+                Console.WriteLine("收到[" + conn.GetAddress() + "]数据"+str);
+                str = conn.GetAddress() + str;
+                byte[] bytes = Encoding.UTF8.GetBytes(str);
+                for(int i = 0; i < conns.Length; i++)
+                {
+                    if (conns[i] == null)
+                    {
+                        continue;
+                    }
+                    if (conns[i].isUse)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine("将消息发送给" + conns[i].GetAddress());
+                    conns[i].socket.Send(bytes);
+                }
+                conn.socket.BeginReceive(conn.readbuffer, conn.buffCount, conn.Remain(), SocketFlags.None, ReceiveCb, conn);
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                
+            }
         }
     }
 }

@@ -1,0 +1,7 @@
+E:\Github\Socket\AsyncSocektSever\AsyncSocektSever\bin\Debug\AsyncSocektSever.exe.config
+E:\Github\Socket\AsyncSocektSever\AsyncSocektSever\bin\Debug\AsyncSocektSever.exe
+E:\Github\Socket\AsyncSocektSever\AsyncSocektSever\bin\Debug\AsyncSocektSever.pdb
+E:\Github\Socket\AsyncSocektSever\AsyncSocektSever\obj\Debug\AsyncSocektSever.csprojResolveAssemblyReference.cache
+E:\Github\Socket\AsyncSocektSever\AsyncSocektSever\obj\Debug\AsyncSocektSever.csproj.CoreCompileInputs.cache
+E:\Github\Socket\AsyncSocektSever\AsyncSocektSever\obj\Debug\AsyncSocektSever.exe
+E:\Github\Socket\AsyncSocektSever\AsyncSocektSever\obj\Debug\AsyncSocektSever.pdb
